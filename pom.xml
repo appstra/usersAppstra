@@ -11,7 +11,8 @@
 	<groupId>com.appstra</groupId>
 	<artifactId>users</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<!--<packaging>war</packaging>-->
+	<packaging>jar</packaging>
 	<name>users</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
