@@ -1,4 +1,4 @@
-# usersIntec - Spring Boot 3.4.0
+# appstra - Spring Boot 3.4.0
 
 Este proyecto es una aplicación desarrollada con **Spring Boot 3.4.0** que proporciona un sistema de administración para gestionar **usuarios**, **personas**, **estados**, **tipos de estados**, **tipos de documento**, **países**, **provincias** y **municipios**.
 
