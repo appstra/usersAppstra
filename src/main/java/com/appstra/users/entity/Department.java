@@ -36,7 +36,6 @@ public class Department {
     @JoinColumn(name = "COUN_ID", referencedColumnName = "COUN_ID")
     private Country country;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "department")
     private List<Province> provinceList;
 

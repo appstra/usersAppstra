@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.1.0</version>
+			<version>2.6.0</version>
 		</dependency>
 
 		<!-- Dependencia para la validación de datos en Spring Boot usando el estándar Java Bean Validation (JSR-380), permitiendo la validación automática de entradas en clases de modelo y controladores. -->
