@@ -11,8 +11,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Table(name = "PROVINCE", schema = "PARAMETERIZATION")
 @Entity
+@Table(name = "PROVINCE", schema = "PARAMETERIZATION")
 public class Province {
 
     @Id
@@ -37,7 +37,6 @@ public class Province {
     @JoinColumn(name = "DEPA_ID", referencedColumnName = "DEPA_ID")
     private Department department;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "province")
     private List<City> municipalitiesList;
 }

@@ -11,8 +11,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Table(name = "CITY", schema = "PARAMETERIZATION")
 @Entity
+@Table(name = "CITY", schema = "PARAMETERIZATION")
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
