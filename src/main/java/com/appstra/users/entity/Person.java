@@ -44,6 +44,12 @@ public class Person {
     @Column(name = "PERS_CREATION_DATE")
     private Timestamp personCreationDate;
 
+    @Column(name = "PERS_BIRTHDAY_DATE")
+    private Timestamp personBirthdayDate;
+
+    @Column(name = "PERS_CHILDREN_DATE")
+    private Integer personChildren;
+
     @Column(name = "PERS_EDIT_DATE")
     private Timestamp personEditDate;
 
