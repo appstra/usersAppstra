@@ -11,4 +11,5 @@ public interface PersonService {
     Person upDatePerson (Person person);
     Boolean deletePerson (Integer personId);
     List<Person> listPerson();
+    Person getPerson (Integer personId);
 }

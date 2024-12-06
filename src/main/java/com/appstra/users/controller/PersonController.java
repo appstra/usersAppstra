@@ -38,4 +38,9 @@ public class PersonController {
     public ResponseEntity<List<Person>> listPerson (){
         return ResponseEntity.ok(personService.listPerson());
     }
+    @GetMapping("/{personId}")
+    @Operation(summary = "Informa persona", description = "Informa persona")
+    public ResponseEntity<Person> getPerson (@PathVariable("personId") Integer personId){
+        return ResponseEntity.ok(personService.getPerson(personId));
+    }
 }

@@ -53,4 +53,9 @@ public class PersonImpl implements PersonService {
     public List<Person> listPerson() {
         return personRepository.findAll();
     }
+
+    @Override
+    public Person getPerson(Integer personId) {
+        return personRepository.findByPersonId(personId);
+    }
 }
