@@ -38,6 +38,9 @@ public class Person {
     @JoinColumn(name = "CITY_ID", referencedColumnName = "CITY_ID")
     private City city;
 
+    @Column(name = "PERS_RH")
+    private String personRH;
+
     @Column(name = "PERS_BLOOD_TYPE")
     private String personBloodType;
 
