@@ -50,7 +50,7 @@ public class Person {
     @Column(name = "PERS_BIRTHDAY_DATE")
     private Timestamp personBirthdayDate;
 
-    @Column(name = "PERS_CHILDREN_DATE")
+    @Column(name = "PERS_CHILDREN_NUMBER")
     private Integer personChildren;
 
     @Column(name = "PERS_EDIT_DATE")
