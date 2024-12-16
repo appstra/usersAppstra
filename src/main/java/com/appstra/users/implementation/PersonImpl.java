@@ -23,11 +23,13 @@ public class PersonImpl implements PersonService {
 
     @Override
     public Person savePerson(Person person) {
-        User savedUser = userService.saveUser(person.getUser());
-        if (savedUser == null) {
-            throw new IllegalStateException("Error al guardar el usuario: el objeto devuelto es nulo.");
+        if(person.getUser() == null){
+            User savedUser = userService.saveUser(person.getUser());
+            if (savedUser == null) {
+                throw new IllegalStateException("Error al guardar el usuario: el objeto devuelto es nulo.");
+            }
+            person.getUser().setUserId(savedUser.getUserId());
         }
-        person.getUser().setUserId(savedUser.getUserId());
         return personRepository.save(person);
     }
 
