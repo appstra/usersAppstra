@@ -56,6 +56,9 @@ public class Person {
     @Column(name = "PERS_IDENTIFICATION_NUMBER")
     private Integer personNumberIdentification;
 
+    @Column(name = "PERS_DATE_ISSUE_IDENTIFICATION")
+    private Timestamp personDateIssueIdentification;
+
     @Column(name = "PERS_EDIT_DATE")
     private Timestamp personEditDate;
 
