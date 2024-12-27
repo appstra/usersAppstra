@@ -1,0 +1,26 @@
+spring.application.name=usersAppstra
+
+#--------------------------DataBase
+# Base de datos Render
+spring.datasource.url=jdbc:postgresql://dpg-ct50hs5ds78s73bl71lg-a.oregon-postgres.render.com:5432/userappstra
+spring.datasource.username=userappstra_user
+spring.datasource.password=e3gH15LLn8Y5YpX2TiSAk0abwuHVX6y0
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Opcionales (ajustan el pool de conexiones)
+spring.datasource.hikari.maximum-pool-size=5
+spring.datasource.hikari.minimum-idle=2
+spring.datasource.hikari.idle-timeout=30000
+spring.datasource.hikari.connection-timeout=20000
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+
+#-swagger http://localhost:8080/swagger-ui/index.html#/
+springdoc.api-docs.path=/api-docs
+
+#-------------------------- security ----------------------------
+logging.level.org.springframework.security.web.*=debug
+#---------------------------- externo ---------------------------
