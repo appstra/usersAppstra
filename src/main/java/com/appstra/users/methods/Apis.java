@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class Apis {
     public static final String  EMPLOYEE = "http://localhost:8085/api/v1/Employee/listPersonCompany/";
-
+    //public static final String  EMPLOYEE = "http://192.168.25.22:8080/employee-0.0.1/api/v1/Employee/listPersonCompany/";
     public static String GetApi(String method, String url, String token, String jsonBody) throws IOException {
 
         URL obj = new URL(url);
@@ -49,5 +49,6 @@ public class Apis {
             return response.toString();
         }
     }
+
 
 }
