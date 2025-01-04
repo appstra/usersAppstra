@@ -99,6 +99,7 @@ public class UserImpl implements UserService {
                     User newUser = new User(user,password,1,1);
                     try {
                         this.saveUser(newUser);
+                        userDto.setUserName(user);
                         userDto.setState("Creado correctamente");
                     } catch (IllegalArgumentException e) {
                         userDto.setUserName(user);
