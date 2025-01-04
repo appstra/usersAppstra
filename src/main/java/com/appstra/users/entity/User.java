@@ -2,16 +2,29 @@ package com.appstra.users.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.sql.Timestamp;
 
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "USER",schema = "SECURITY")
 public class User {
+
+    public User(String userUser, String userPassword,Integer stateId,Integer userEditUserID) {
+        this.userUser = userUser;
+        this.userPassword = userPassword;
+        this.state = new State(); // Inicialización del objeto State
+        this.state.setStateId(stateId); // Asignar el ID del estado
+        this.userEditUserID = userEditUserID;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
