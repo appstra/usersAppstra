@@ -1,8 +1,10 @@
 package com.appstra.users.implementation;
 
 import com.appstra.users.dto.MassiveUsersDTO;
+import com.appstra.users.entity.Person;
 import com.appstra.users.entity.User;
 import com.appstra.users.repository.UserRepository;
+import com.appstra.users.service.PersonService;
 import com.appstra.users.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,13 +14,11 @@ import java.io.InputStream;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -26,9 +26,11 @@ import java.util.List;
 public class UserImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PersonService personService;
 
-    public UserImpl(UserRepository userRepository) {
+    public UserImpl(UserRepository userRepository, PersonService personService) {
         this.userRepository = userRepository;
+        this.personService = personService;
     }
 
     @Override
@@ -90,23 +92,39 @@ public class UserImpl implements UserService {
                 if (row.getRowNum() == 0) continue;
 
                 Cell userCell = row.getCell(0); // Primera columna
-                Cell passwordCell = row.getCell(1); // Segunda columna
+                Cell Identification = row.getCell(1); // Segunda columna
 
-                if (userCell != null && passwordCell != null) {
+                if (userCell != null && Identification != null) {
                     String user = userCell.getStringCellValue();
-                    String password = passwordCell.getStringCellValue();
+                    Integer personNumberIdentification = (int)Identification.getNumericCellValue();
 
-                    User newUser = new User(user,password,1,1);
+                    User newUser = new User(user,"AppSt@r2024*",1,1,11);
                     try {
-                        this.saveUser(newUser);
-                        userDto.setUserName(user);
-                        userDto.setState("Creado correctamente");
+                        //Busca a la persona a quien se le va a signar
+                        Person person = this.personService.getPersonPersonNumberIdentification(personNumberIdentification);
+                        if(person != null){
+                            // guarda el nuevo usuario
+                            User createUser = this.saveUser(newUser);
+                            if(person.getUser() == null){
+                                //le asigna el usuario
+                                person.setUser(createUser);
+                                //actualiza la persona con el usuario
+                                this.personService.upDatePerson(person);
+
+                                userDto.setUserId(createUser.getUserId());
+                                userDto.setUserName(user);
+                                userDto.setState("Creado correctamente");
+                            }else{
+                                throw new IllegalArgumentException("ERRO: la persona con el numero de identificacion " + personNumberIdentification + " Ya tinene usuario:" + person.getUser().getUserUser());
+                            }
+                        }else{
+                            throw new IllegalArgumentException("ERRO: la persona con el numero de identificacion " + personNumberIdentification + " No existe");
+                        }
                     } catch (IllegalArgumentException e) {
                         userDto.setUserName(user);
                         userDto.setState(e.getMessage()); // Captura el mensaje de la excepción
                     }
                     usersList.add(userDto);
-                    System.out.println("User: " + userDto.getUserName() + " Password: " + userDto.getState());
                 }
             }
 
@@ -116,6 +134,29 @@ public class UserImpl implements UserService {
         }
 
         return usersList;
+    }
+
+    @Override
+    public Person createUserpersonId(Integer personId) {
+        Person person = this.personService.getPerson(personId);
+
+        String[] firstNameParts = person.getPersonFirstName().split(" ");
+        String[] lastNameParts  = person.getPersonLastName().split(" ");
+
+        String firstPart = firstNameParts.length > 0 ? firstNameParts[0] : "";
+        String lastPart = lastNameParts.length > 0 ? lastNameParts[0] : "";
+
+        String userUser = firstPart +"."+ lastPart;
+
+        User newUser = new User(userUser,"AppSt@r2024*",1,1,11);
+
+        newUser = this.saveUser(newUser);
+
+        if(newUser.getUserId() != null){
+            person.setUser(newUser);
+            person = this.personService.upDatePerson(person);
+        }
+        return person;
     }
 
     private boolean isValidPassword(String password) {

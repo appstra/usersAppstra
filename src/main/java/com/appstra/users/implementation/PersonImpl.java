@@ -1,35 +1,27 @@
 package com.appstra.users.implementation;
 
 import com.appstra.users.entity.Person;
-import com.appstra.users.entity.User;
-import com.appstra.users.repository.UserRepository;
 import com.appstra.users.service.PersonService;
-import com.appstra.users.service.UserService;
 import com.appstra.users.repository.PersonRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class PersonImpl implements PersonService {
 
     private final PersonRepository personRepository;
-    private final UserService userService;
 
-    public PersonImpl(PersonRepository personRepository, UserRepository userRepository, UserService userRepository1, UserService userService) {
+    public PersonImpl(PersonRepository personRepository) {
         this.personRepository = personRepository;
-        this.userService = userService;
     }
 
     @Override
     public Person savePerson(Person person) {
-        if(person.getUser() != null){
-            User savedUser = userService.saveUser(person.getUser());
-            if (savedUser == null) {
-                throw new IllegalStateException("Error al guardar el usuario: el objeto devuelto es nulo.");
-            }
-            person.getUser().setUserId(savedUser.getUserId());
-        }
+        person.setPersonCreationDate(Timestamp.valueOf(LocalDateTime.now()));
+        person.setPersonEditDate(Timestamp.valueOf(LocalDateTime.now()));
         return personRepository.save(person);
     }
 
@@ -37,7 +29,7 @@ public class PersonImpl implements PersonService {
     public Person upDatePerson(Person person) {
         Person exisPerson = personRepository.findById(person.getPersonId()).orElseThrow(() -> new IllegalArgumentException("la persona no existe: " + person.getPersonId()));
         person.setPersonCreationDate(exisPerson.getPersonCreationDate());
-        person.setUser(exisPerson.getUser());
+        person.setPersonEditDate(Timestamp.valueOf(LocalDateTime.now()));
 
         return personRepository.save(person);
     }
@@ -59,5 +51,10 @@ public class PersonImpl implements PersonService {
     @Override
     public Person getPerson(Integer personId) {
         return personRepository.findByPersonId(personId);
+    }
+
+    @Override
+    public Person getPersonPersonNumberIdentification(Integer personNumberIdentification) {
+        return personRepository.findByPersonNumberIdentification(personNumberIdentification);
     }
 }

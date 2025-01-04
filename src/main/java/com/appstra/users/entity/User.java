@@ -17,12 +17,13 @@ import java.sql.Timestamp;
 @Table(name = "USER",schema = "SECURITY")
 public class User {
 
-    public User(String userUser, String userPassword,Integer stateId,Integer userEditUserID) {
+    public User(String userUser, String userPassword,Integer stateId,Integer userEditUserID,Integer roleId) {
         this.userUser = userUser;
         this.userPassword = userPassword;
         this.state = new State(); // Inicialización del objeto State
         this.state.setStateId(stateId); // Asignar el ID del estado
         this.userEditUserID = userEditUserID;
+        this.roleId = roleId;
     }
 
     @Id

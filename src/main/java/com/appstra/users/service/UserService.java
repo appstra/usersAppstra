@@ -2,6 +2,7 @@ package com.appstra.users.service;
 
 
 import com.appstra.users.dto.MassiveUsersDTO;
+import com.appstra.users.entity.Person;
 import com.appstra.users.entity.User;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,5 +16,6 @@ public interface UserService {
     Boolean deleteUser (Integer userId);
     List<User> listUser();
     List<MassiveUsersDTO> uploadMassiveUsers(MultipartFile document);
+    Person createUserpersonId (Integer personId);
 
 }

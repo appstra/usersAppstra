@@ -12,4 +12,5 @@ public interface PersonService {
     Boolean deletePerson (Integer personId);
     List<Person> listPerson();
     Person getPerson (Integer personId);
+    Person getPersonPersonNumberIdentification(Integer personNumberIdentification);
 }

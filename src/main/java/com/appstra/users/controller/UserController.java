@@ -1,6 +1,7 @@
 package com.appstra.users.controller;
 
 import com.appstra.users.dto.MassiveUsersDTO;
+import com.appstra.users.entity.Person;
 import com.appstra.users.entity.User;
 import com.appstra.users.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -50,5 +51,11 @@ public class UserController {
     public ResponseEntity<List<MassiveUsersDTO>> uploadMassiveUsers(
             @RequestPart("document") MultipartFile document) {
         return ResponseEntity.ok(userService.uploadMassiveUsers(document));
+    }
+
+    @GetMapping("createUser/{personId}")
+    @Operation(summary = "Crear Usuario con personId", description = "Crear Usuario con personId")
+    public ResponseEntity<Person> createUserpersonId (@PathVariable("personId") Integer personId){
+        return ResponseEntity.ok(userService.createUserpersonId(personId));
     }
 }
