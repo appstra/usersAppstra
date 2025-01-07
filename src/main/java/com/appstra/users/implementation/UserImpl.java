@@ -140,13 +140,7 @@ public class UserImpl implements UserService {
     public Person createUserpersonId(Integer personId) {
         Person person = this.personService.getPerson(personId);
 
-        String[] firstNameParts = person.getPersonFirstName().split(" ");
-        String[] lastNameParts  = person.getPersonLastName().split(" ");
-
-        String firstPart = firstNameParts.length > 0 ? firstNameParts[0] : "";
-        String lastPart = lastNameParts.length > 0 ? lastNameParts[0] : "";
-
-        String userUser = firstPart +"."+ lastPart;
+        String userUser = "CC" + person.getPersonNumberIdentification();
 
         User newUser = new User(userUser,"AppSt@r2024*",1,1,11);
 
