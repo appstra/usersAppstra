@@ -30,6 +30,9 @@ public class PersonImpl implements PersonService {
         Person exisPerson = personRepository.findById(person.getPersonId()).orElseThrow(() -> new IllegalArgumentException("la persona no existe: " + person.getPersonId()));
         person.setPersonCreationDate(exisPerson.getPersonCreationDate());
         person.setPersonEditDate(Timestamp.valueOf(LocalDateTime.now()));
+        if(exisPerson.getUser() != null){
+            person.setUser(exisPerson.getUser());
+        }
 
         return personRepository.save(person);
     }
