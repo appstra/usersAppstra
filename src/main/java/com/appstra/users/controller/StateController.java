@@ -39,4 +39,11 @@ public class StateController {
         return ResponseEntity.ok(stateService.listState());
     }
 
+    @GetMapping("/listStateForStateType/{stateTypeId}")
+    @Operation(summary = "Lista estados por tipo estado", description = "Lista estados por tipo estado ID")
+    public ResponseEntity<List<State>> listStateForStateType (@PathVariable("stateTypeId") Integer stateTypeId)
+    {
+        return ResponseEntity.ok(stateService.listStateForStateType(stateTypeId));
+    }
+
 }

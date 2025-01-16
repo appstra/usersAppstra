@@ -11,4 +11,5 @@ public interface StateService {
     State upDateState (State state);
     Boolean deleteState (Integer stateId);
     List<State> listState();
+    List<State> listStateForStateType(Integer stateTypeId);
 }

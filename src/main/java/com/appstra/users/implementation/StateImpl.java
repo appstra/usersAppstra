@@ -42,4 +42,9 @@ public class StateImpl implements StateService {
     public List<State> listState() {
         return stateRepository.findAll();
     }
+
+    @Override
+    public List<State> listStateForStateType(Integer stateTypeId) {
+        return stateRepository.findByStateTypeStateTypeId(stateTypeId);
+    }
 }
