@@ -1,6 +1,8 @@
 package com.appstra.users.methods;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 
 import java.io.*;
 import java.net.*;
@@ -16,9 +18,19 @@ import java.nio.charset.StandardCharsets;
  *                 String responsePut = GetApi("PUT", Apis.EMPLOYEE, token, jsonBody);
  *                 System.out.println("PUT Response: " + responsePut);
  */
+@Configuration
 public class Apis {
+
     @Value("${url-api}")
-    public static String  EMPLOYEE;
+    private String employeeUrl;
+
+    public static String EMPLOYEE;
+
+    @PostConstruct
+    private void init() {
+        EMPLOYEE = employeeUrl;
+    }
+
     public static String GetApi(String method, String url, String token, String jsonBody) throws IOException {
 
         URL obj = new URL(url);
