@@ -1,0 +1,15 @@
+# application.yml
+
+spring:
+  config:
+    activate:
+      on-profile: dev  # Activa el perfil 'dev' por defecto
+
+---
+spring.config.activate.on-profile: dev
+url-api: "http://localhost:8085/api/v1/Employee/listPersonCompany/"
+
+---
+spring.config.activate.on-profile: prod
+url-api: "http://192.168.25.22:8080/employee-0.0.1/api/v1/Employee/listPersonCompany/"
+

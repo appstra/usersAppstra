@@ -22,3 +22,5 @@ springdoc.api-docs.path=/api-docs
 
 #-------------------------- security ----------------------------
 logging.level.org.springframework.security.web.*=debug
+#-------------------------- perfil ------------------------------
+spring.profiles.active=dev

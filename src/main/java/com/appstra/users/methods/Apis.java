@@ -1,5 +1,7 @@
 package com.appstra.users.methods;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
@@ -15,8 +17,8 @@ import java.nio.charset.StandardCharsets;
  *                 System.out.println("PUT Response: " + responsePut);
  */
 public class Apis {
-    public static final String  EMPLOYEE = "http://localhost:8085/api/v1/Employee/listPersonCompany/";
-    //public static final String  EMPLOYEE = "http://192.168.25.22:8080/employee-0.0.1/api/v1/Employee/listPersonCompany/";
+    @Value("${url-api}")
+    public static String  EMPLOYEE;
     public static String GetApi(String method, String url, String token, String jsonBody) throws IOException {
 
         URL obj = new URL(url);
