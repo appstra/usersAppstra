@@ -7,9 +7,11 @@ spring:
 
 ---
 spring.config.activate.on-profile: dev
-url-api: "http://localhost:8085/api/v1/Employee/listPersonCompany/"
+employee-url: "http://localhost:8085/api/v1/Employee/listPersonCompany/"
+company-url: "http://localhost:8095/api/v1/userscompany/listUsersCompanyUserId/"
 
 ---
 spring.config.activate.on-profile: prod
-url-api: "http://192.168.25.22:8080/employee-0.0.1/api/v1/Employee/listPersonCompany/"
+employee-url: "http://192.168.25.22:8080/employee-0.0.1/api/v1/Employee/listPersonCompany/"
+company-url: "http://192.168.25.22:8080/companyAppStra-0.0.1/api/v1/userscompany/listUsersCompanyUserId/"
 

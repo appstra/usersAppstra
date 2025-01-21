@@ -21,14 +21,18 @@ import java.nio.charset.StandardCharsets;
 @Configuration
 public class Apis {
 
-    @Value("${url-api}")
+    @Value("${employee-url}")
     private String employeeUrl;
+    @Value("${company-url}")
+    private String companyUrl;
 
     public static String EMPLOYEE;
+    public static String COMPANY;
 
     @PostConstruct
     private void init() {
         EMPLOYEE = employeeUrl;
+        COMPANY = companyUrl;
     }
 
     public static String GetApi(String method, String url, String token, String jsonBody) throws IOException {
