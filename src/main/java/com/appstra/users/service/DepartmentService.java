@@ -5,5 +5,5 @@ import com.appstra.users.entity.Department;
 import java.util.List;
 
 public interface DepartmentService {
-    List<Department> listDepartment(Integer departmentId);
+    List<Department> listDepartment(Integer countryId);
 }

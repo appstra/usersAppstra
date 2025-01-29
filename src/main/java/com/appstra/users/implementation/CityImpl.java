@@ -16,7 +16,7 @@ public class CityImpl implements CityService {
 
 
     @Override
-    public List<City> findByCityId(Integer cityId) {
-        return cityRepository.findByCityId(cityId);
+    public List<City> findByProvinceProvinceId(Integer provinceId) {
+        return cityRepository.findByProvinceProvinceId(provinceId);
     }
 }

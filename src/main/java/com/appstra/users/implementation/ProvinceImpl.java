@@ -15,7 +15,7 @@ public class ProvinceImpl implements ProvinceService {
     }
 
     @Override
-    public List<Province> listDepartment(Integer provinceId) {
-        return provinceRepository.findByProvinceId(provinceId);
+    public List<Province> listDepartment(Integer departmentId) {
+        return provinceRepository.findByDepartmentDepartmentId(departmentId);
     }
 }

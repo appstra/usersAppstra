@@ -20,9 +20,9 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @GetMapping("/listdepartment/{departmentId}")
+    @GetMapping("/listdepartment/{countryId}")
     @Operation(summary = "Lista departamentos", description = "Lista departamentos")
-    public ResponseEntity<List<Department>> listDepartment (@PathVariable(name = "departmentId") Integer departmentId){
-        return ResponseEntity.ok(departmentService.listDepartment(departmentId));
+    public ResponseEntity<List<Department>> listDepartment (@PathVariable(name = "countryId") Integer countryId){
+        return ResponseEntity.ok(departmentService.listDepartment(countryId));
     }
 }

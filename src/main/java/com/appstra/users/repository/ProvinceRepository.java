@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProvinceRepository extends JpaRepository<Province, Integer> {
     List<Province> findByProvinceId(Integer provinceId);
+    List<Province> findByDepartmentDepartmentId(Integer departmentId);
 }

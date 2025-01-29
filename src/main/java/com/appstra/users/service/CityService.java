@@ -5,5 +5,5 @@ import com.appstra.users.entity.City;
 import java.util.List;
 
 public interface CityService {
-    List<City> findByCityId(Integer cityId);
+    List<City> findByProvinceProvinceId(Integer provinceId);
 }

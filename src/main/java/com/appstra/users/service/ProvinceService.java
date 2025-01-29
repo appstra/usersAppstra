@@ -6,5 +6,5 @@ import com.appstra.users.entity.Province;
 import java.util.List;
 
 public interface ProvinceService {
-    List<Province> listDepartment(Integer provinceId);
+    List<Province> listDepartment(Integer departmentId);
 }

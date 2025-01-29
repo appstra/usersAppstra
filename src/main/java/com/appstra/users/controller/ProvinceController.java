@@ -19,9 +19,9 @@ public class ProvinceController {
     public ProvinceController(ProvinceService provinceService) {
         this.provinceService = provinceService;
     }
-    @GetMapping("/listprovince/{provinceId}")
+    @GetMapping("/listprovince/{departmentId}")
     @Operation(summary = "Lista provincias", description = "Lista provincias")
-    public ResponseEntity<List<Province>> listProvince (@PathVariable(name = "provinceId") Integer provinceId){
-        return ResponseEntity.ok(provinceService.listDepartment(provinceId));
+    public ResponseEntity<List<Province>> listProvince (@PathVariable(name = "departmentId") Integer departmentId){
+        return ResponseEntity.ok(provinceService.listDepartment(departmentId));
     }
 }

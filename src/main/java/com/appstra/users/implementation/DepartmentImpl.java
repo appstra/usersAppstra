@@ -15,7 +15,7 @@ public class DepartmentImpl implements DepartmentService {
     }
 
     @Override
-    public List<Department> listDepartment(Integer depaId) {
-        return departmentRepository.findByDepartmentId(depaId);
+    public List<Department> listDepartment(Integer countryId) {
+        return departmentRepository.findByCountryCountryId(countryId);
     }
 }

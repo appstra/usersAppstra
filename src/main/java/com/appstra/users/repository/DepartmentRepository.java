@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface DepartmentRepository  extends JpaRepository<Department,Integer> {
     List<Department> findByDepartmentId(Integer departmentId);
+    List<Department> findByCountryCountryId(Integer departmentId);
 }

@@ -20,9 +20,9 @@ public class CityController {
         this.cityService = cityService;
     }
 
-    @GetMapping("/listcity/{cityId}")
+    @GetMapping("/listcity/{provinceId}")
     @Operation(summary = "Lista ciudades", description = "Lista ciudades")
-    public ResponseEntity<List<City>> listCity (@PathVariable(name = "cityId") Integer cityId){
-        return ResponseEntity.ok(cityService.findByCityId(cityId));
+    public ResponseEntity<List<City>> listCity (@PathVariable(name = "provinceId") Integer provinceId){
+        return ResponseEntity.ok(cityService.findByProvinceProvinceId(provinceId));
     }
 }
