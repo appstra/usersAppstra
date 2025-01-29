@@ -23,10 +23,10 @@ public interface CityRepository extends JpaRepository<City,Integer> {
             city.cityName
         )
         FROM
-            City city
-            INNER JOIN city.province prov
-            INNER JOIN prov.department depa
-            INNER JOIN depa.country coun
+            Country coun
+            INNER JOIN coun.departmentList depa
+            INNER JOIN depa.provinceList prov
+            INNER JOIN prov.municipalitiesList city
         WHERE
             city.cityId = :cityId
     """)

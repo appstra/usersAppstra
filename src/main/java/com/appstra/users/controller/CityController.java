@@ -27,11 +27,6 @@ public class CityController {
         return ResponseEntity.ok(cityService.findByProvinceProvinceId(provinceId));
     }
 
-    /**
-     * EndPoint que se consume desde employeeAppstra
-     * @param cityId
-     * @return CityDTO
-     */
     @GetMapping("/listInfoCity/{cityId}")
     @Operation(summary = "Lista ciudades,provicia,departamento y pais", description = "Lista ciudades,provicia,departamento y pais")
     public ResponseEntity<List<CityDTO>> listInfoCity (@PathVariable(name = "cityId") Integer cityId){
