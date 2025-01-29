@@ -32,11 +32,11 @@ public class Province {
     @Column(name = "PROV_EDIT_USER_ID")
     private Integer provinceEditUserID;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "DEPA_ID", referencedColumnName = "DEPA_ID")
     private Department department;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "province")
     private List<City> municipalitiesList;
 }

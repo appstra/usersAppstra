@@ -1,5 +1,6 @@
 package com.appstra.users.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
@@ -28,6 +29,7 @@ public class Country {
     @Column(name = "COUN_EDIT_DATE")
     private Timestamp countryEditDate;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "country")
     private List<Department> departmentList;
 

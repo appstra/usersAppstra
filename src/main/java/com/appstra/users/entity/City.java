@@ -34,7 +34,6 @@ public class City {
     @Column(name = "CITY_EDIT_USER_ID")
     private Integer cityEditUserID;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "PROV_ID", referencedColumnName = "PROV_ID")
     private Province province;

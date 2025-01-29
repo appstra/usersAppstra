@@ -31,11 +31,11 @@ public class Department {
     @Column(name = "DEPA_EDIT_USER_ID")
     private Integer departmentEditUserID;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "COUN_ID", referencedColumnName = "COUN_ID")
     private Country country;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "department")
     private List<Province> provinceList;
 
