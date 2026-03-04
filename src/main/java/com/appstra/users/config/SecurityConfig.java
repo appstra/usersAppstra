@@ -3,6 +3,7 @@ package com.appstra.users.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,17 +26,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 
         httpSecurity
-                .csrf().disable() // permite seguridad pero al colocar JWT precenta inconvenientes en la aplicacion
-                .cors().and() // permite la comunicacion de 2 origenes diferentes EJEMPLO: localHost:8080 y front 42000
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() //se quitan las sessiones
-                .authorizeHttpRequests()// para autorizar las peticiones HTTP
-                .requestMatchers("api/v1/auntenticar/**").permitAll() // permite consumir sin autenticacion
-                .anyRequest() // cualquier peticion que llegue
-                .authenticated()// debe estar auntenticado
-                .and() // y
-                // se quita para colocar el filtro de JWT .httpBasic(); // debe estar en la metologia Basic
+                .csrf(csrf -> csrf.disable()) // permite seguridad pero al colocar JWT presenta inconvenientes en la aplicacion
+                .cors(Customizer.withDefaults()) // permite la comunicacion de 2 origenes diferentes EJEMPLO: localhost:8080 y front 4200
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                ) // se quitan las sesiones
+                .authorizeHttpRequests(auth -> auth // para autorizar las peticiones HTTP
+                        .requestMatchers("/api/v1/auntenticar/**").permitAll() // permite consumir sin autenticacion
+                        .anyRequest() // cualquier peticion que llegue
+                        .authenticated() // debe estar autenticado
+                )
+                // se quita para colocar el filtro de JWT .httpBasic(); // debe estar en la metodologia Basic
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-
 
         return httpSecurity.build();
     }

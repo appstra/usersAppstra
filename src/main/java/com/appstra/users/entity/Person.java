@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Getter
@@ -48,7 +49,7 @@ public class Person {
     private Timestamp personCreationDate;
 
     @Column(name = "PERS_BIRTHDAY_DATE")
-    private Timestamp personBirthdayDate;
+    private Date personBirthdayDate;
 
     @Column(name = "PERS_CHILDREN_NUMBER")
     private Integer personChildren;
@@ -64,6 +65,22 @@ public class Person {
 
     @Column(name = "PERS_EDIT_USER_ID")
     private Integer personEditUserID;
+
+    @Column(name = "SHOE_SIZE")
+    private Integer personShoeSize;
+
+    @Column(name = "PANTS_SIZE")
+    private Integer personPantsSize;
+
+    @Column(name = "SHIRT_SIZE")
+    private String personShirtSize;
+
+    @Column(name = "LICENSE")
+    private String personLicense;
+
+    @Column(name = "DATE_LICENCE")
+    private Date personDateLicence;
+
     @OneToOne
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private User user;
